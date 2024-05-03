@@ -12,13 +12,13 @@ const ReferralButton = ({ jdLink }) => {
       href={jdLink}
       variant="contained"
       fullWidth
-      sx={{ backgroundColor: "#4943da", fontFamily:"Poppins" }}
+      sx={{ backgroundColor: "#4943da", fontFamily:"Poppins", fontSize:'12px' }}
     >
       <Stack direction="row" spacing={1}>
-        <Avatar alt="person1" src={person1Image} sx={{filter: 'blur(8px)'}} />
-        <Avatar alt="person2" src={person2Image} sx={{filter: 'blur(8px)'}} />
+        <Avatar alt="person1" src={person1Image} sx={{filter: 'blur(5px)', width: 24, height: 24, margin:1}} />
+        <Avatar alt="person2" src={person2Image} sx={{filter: 'blur(5px)', width: 24, height: 24, margin:1}} />
       </Stack>
-      Unlock Refferals
+      Unlock refferal asks
     </Button>
   );
 };

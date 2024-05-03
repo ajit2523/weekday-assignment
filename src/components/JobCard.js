@@ -3,7 +3,6 @@ import {
   Card,
   CardContent,
   Typography,
-  Button,
   CardActions,
   Collapse,
   CardMedia,
@@ -22,9 +21,24 @@ const JobCard = ({ job }) => {
 
   return (
     <Card
-      sx={{ display: "flex", flexDirection: "column", maxWidth: 300, m: 2, fontFamily:'Poppins', textAlign:'left'}}
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        maxWidth: 360,
+        m: 2,
+        fontFamily: "Poppins",
+        textAlign: "left",
+        borderRadius: 5,
+      }}
     >
-      <div style={{ display: "flex", alignItems: "center", padding: "1rem" }}>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          padding: "1rem",
+          gap: "1rem", // Equal gap between elements
+        }}
+      >
         <CardMedia
           className="logo"
           component="img"
@@ -32,8 +46,10 @@ const JobCard = ({ job }) => {
           image={job.logoUrl}
           alt={job.companyName}
         />
-        <div style={{ marginLeft: "1rem", textAlign: "left" }}>
-          <Typography variant="subtitle1" sx={{color:'#898989'}}>{job.companyName}</Typography>
+        <div>
+          <Typography variant="subtitle1" sx={{ color: "#898989" }}>
+            {job.companyName}
+          </Typography>
           <Typography variant="h6">
             {job.jobRole
               .split(" ")
@@ -44,27 +60,47 @@ const JobCard = ({ job }) => {
               )
               .join(" ")}
           </Typography>
-          <Typography variant="subtitle2" color="text.primary" sx={{fontWeight:'bold'}}>
-            Location: {job.location}
+          <Typography
+            variant="subtitle2"
+            color="text.primary"
+            sx={{ fontWeight: "bold" }}
+          >
+            {job.location
+              .split(" ")
+              .map((word) =>
+                word.length <= 3
+                  ? word.toUpperCase()
+                  : word.charAt(0).toUpperCase() + word.slice(1)
+              )
+              .join(" ")}
           </Typography>
         </div>
       </div>
-      <CardContent sx={{alignItems:'left'}}>
-        
-        <Typography variant="body2" color="text.secondary">
-          Estimated Salary: ₹{job.minJdSalary} - ₹{job.maxJdSalary} LPA
+      <CardContent sx={{ alignItems: "left" }}>
+        <Typography variant="h6" sx={{ color: "#475465", fontSize:'18px' }}>
+          {job.minJdSalary && job.maxJdSalary
+            ? `Estimated Salary: ₹${job.minJdSalary} - ₹${job.maxJdSalary} LPA`
+            : job.minJdSalary
+            ? `Estimated Salary: ₹${job.minJdSalary} LPA`
+            : `Estimated Salary: ₹${job.maxJdSalary} LPA`}{' ✅'}
         </Typography>
+
         <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
-          {expanded ? job.jobDetailsFromCompany : job.jobDetailsFromCompany.slice(0, 150)}
+          {expanded
+            ? job.jobDetailsFromCompany
+            : job.jobDetailsFromCompany.slice(0, 150)}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
-          Minimum Experience: {job.minExp} years
+        <Typography variant="subtitle1" sx={{ color: "#898989" }}>
+          Minimum Experience
+        </Typography>
+        <Typography variant="body2">
+          {job.minExp !== null ? `${job.minExp} years` : "Not Specified"}
         </Typography>
       </CardContent>
-      <CardActions>
-        <Stack direction="column" spacing={2}>
-        <ApplyButton jdLink={job.jdLink} />
-        <ReferralButton jdLink={job.jdLink} />
+      <CardActions sx={{ padding: "16px" }}>
+        <Stack direction="column" spacing={1} sx={{ width: "100%" }}>
+          <ApplyButton jdLink={job.jdLink} />
+          <ReferralButton jdLink={job.jdLink} />
         </Stack>
         {/* {job.jobDetailsFromCompany.length > 150 && (
           <Button size="small" onClick={handleExpandClick}>
