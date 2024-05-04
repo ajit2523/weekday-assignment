@@ -6,7 +6,7 @@ import {
   CardActions,
   Collapse,
   CardMedia,
-  Button
+  Button,
 } from "@mui/material";
 import "./JobCard.css";
 import ApplyButton from "./ApplyButton";
@@ -26,7 +26,7 @@ const JobCard = ({ job }) => {
         display: "flex",
         flexDirection: "column",
         maxWidth: 360,
-        maxHeight:560,
+        maxHeight: 560,
         m: 2,
         fontFamily: "Poppins",
         textAlign: "left",
@@ -50,10 +50,13 @@ const JobCard = ({ job }) => {
           alt={job.companyName}
         />
         <div>
-          <Typography variant="subtitle1" sx={{ color: "#898989", fontSize:'13px' }}>
+          <Typography
+            variant="subtitle1"
+            sx={{ color: "#898989", fontSize: "13px" }}
+          >
             {job.companyName}
           </Typography>
-          <Typography variant="h6" sx={{fontSize:'14px'}}>
+          <Typography variant="h6" sx={{ fontSize: "14px" }}>
             {job.jobRole
               .split(" ")
               .map((word) =>
@@ -66,7 +69,7 @@ const JobCard = ({ job }) => {
           <Typography
             variant="subtitle2"
             color="text.primary"
-            sx={{ fontWeight: "bold", fontSize:'11px', paddingTop:'3px' }}
+            sx={{ fontWeight: "bold", fontSize: "11px", paddingTop: "3px" }}
           >
             {job.location
               .split(" ")
@@ -79,32 +82,64 @@ const JobCard = ({ job }) => {
           </Typography>
         </div>
       </div>
-      <CardContent sx={{ alignItems: "left" , paddingTop:'0px'}}>
-        <Typography variant="h6" sx={{ color: "#475465", fontSize:'14px' }}>
+      <CardContent sx={{ alignItems: "left", padding: "0px 20px 10px 20px" }}>
+        <Typography variant="h6" sx={{ color: "#475465", fontSize: "14px" }}>
           {job.minJdSalary && job.maxJdSalary
             ? `Estimated Salary: ₹${job.minJdSalary} - ₹${job.maxJdSalary} LPA`
             : job.minJdSalary
             ? `Estimated Salary: ₹${job.minJdSalary} LPA`
-            : `Estimated Salary: ₹${job.maxJdSalary} LPA`}{' ✅'}
+            : `Estimated Salary: ₹${job.maxJdSalary} LPA`}
+          {" ✅"}
         </Typography>
 
-        <Typography variant="subtitle1" sx={{ color: "#000000", padding:'5px 0 0 0', fontWeight:'normal', fontSize:'16px'}}>
+        <Typography
+          variant="subtitle1"
+          sx={{
+            color: "#000000",
+            padding: "5px 0 0 0",
+            fontWeight: "normal",
+            fontSize: "16px",
+          }}
+        >
           About Company:
         </Typography>
-        <Typography variant='subtitle2' sx={{ color:'#000000', padding:'0 0 0 0', fontWeight:'bolder', fontSize:'14px'}}>
+        <Typography
+          variant="subtitle2"
+          sx={{
+            color: "#000000",
+            padding: "0 0 0 0",
+            fontWeight: "bolder",
+            fontSize: "14px",
+          }}
+        >
           About us
         </Typography>
         <div style={{ backdropFilter: "blur(10px)" }}>
-          <Typography variant="body2" color="text.secondary" sx={{ mt: 0, background:'-webkit-linear-gradient(#333, #eee)', WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent' }}>
+          <Typography
+            variant="body2"
+            color="text.secondary"
+            sx={{
+              mt: 0,
+              background: "-webkit-linear-gradient(#333, #eee)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            }}
+          >
             {expanded
               ? job.jobDetailsFromCompany
               : job.jobDetailsFromCompany.slice(0, 400)}
           </Typography>
         </div>
         {job.jobDetailsFromCompany.length > 400 && (
-          <Button size="small" onClick={handleExpandClick} sx={{ mt: 1, alignSelf:'center' }}>
-            {expanded ? "Read less" : "Read more"}
-          </Button>
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <Button
+              size="small"
+              onClick={handleExpandClick}
+              sx={{ padding: 0 }}
+            >
+              {expanded ? "Read less" : "View job"}
+            </Button>
+          </div>
         )}
         <Typography variant="subtitle1" sx={{ color: "#898989" }}>
           Minimum Experience
@@ -113,7 +148,7 @@ const JobCard = ({ job }) => {
           {job.minExp !== null ? `${job.minExp} years` : "Not Specified"}
         </Typography>
       </CardContent>
-      <CardActions sx={{ padding: "20px", paddingTop:'0px'}}>
+      <CardActions sx={{ padding: "20px", paddingTop: "0px" }}>
         <Stack direction="column" spacing={1} sx={{ width: "100%" }}>
           <ApplyButton jdLink={job.jdLink} />
           <ReferralButton jdLink={job.jdLink} />
