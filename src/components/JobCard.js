@@ -38,7 +38,7 @@ const JobCard = ({ job }) => {
         style={{
           display: "flex",
           alignItems: "center",
-          padding: "10px",
+          padding: "10px 20px 10px 20px",
           gap: "1rem", // Equal gap between elements
         }}
       >
@@ -113,16 +113,11 @@ const JobCard = ({ job }) => {
           {job.minExp !== null ? `${job.minExp} years` : "Not Specified"}
         </Typography>
       </CardContent>
-      <CardActions sx={{ padding: "16px", paddingTop:'0px'}}>
+      <CardActions sx={{ padding: "20px", paddingTop:'0px'}}>
         <Stack direction="column" spacing={1} sx={{ width: "100%" }}>
           <ApplyButton jdLink={job.jdLink} />
           <ReferralButton jdLink={job.jdLink} />
         </Stack>
-        {/* {job.jobDetailsFromCompany.length > 150 && (
-          <Button size="small" onClick={handleExpandClick}>
-            {expanded ? "Read less" : "Read more"}
-          </Button>
-        )} */}
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
