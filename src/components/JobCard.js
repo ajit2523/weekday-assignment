@@ -12,12 +12,16 @@ import "./JobCard.css";
 import ApplyButton from "./ApplyButton";
 import ReferralButton from "./ReferralButton";
 import Stack from "@mui/material/Stack";
+import JobModal from "./JobModal";
 
 const JobCard = ({ job }) => {
-  const [expanded, setExpanded] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
 
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
+  const handleModalOpen = () => {
+    setOpenModal(true);
+  };
+  const handleModalClose = () => {
+    setOpenModal(false);
   };
 
   return (
@@ -125,19 +129,15 @@ const JobCard = ({ job }) => {
               WebkitTextFillColor: "transparent",
             }}
           >
-            {expanded
-              ? job.jobDetailsFromCompany
-              : job.jobDetailsFromCompany.slice(0, 400)}
+            {job.jobDetailsFromCompany.length > 400
+              ? job.jobDetailsFromCompany.slice(0, 400) + "..."
+              : job.jobDetailsFromCompany}
           </Typography>
         </div>
         {job.jobDetailsFromCompany.length > 400 && (
           <div style={{ display: "flex", justifyContent: "center" }}>
-            <Button
-              size="small"
-              onClick={handleExpandClick}
-              sx={{ padding: 0 }}
-            >
-              {expanded ? "Read less" : "View job"}
+            <Button size="small" onClick={handleModalOpen} sx={{ padding: 0 }}>
+              View job
             </Button>
           </div>
         )}
@@ -154,11 +154,7 @@ const JobCard = ({ job }) => {
           <ReferralButton jdLink={job.jdLink} />
         </Stack>
       </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-          <Typography paragraph>{job.jobDetailsFromCompany}</Typography>
-        </CardContent>
-      </Collapse>
+      <JobModal job={job} open={openModal} handleClose={handleModalClose} />
     </Card>
   );
 };

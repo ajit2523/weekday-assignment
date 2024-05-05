@@ -1,30 +1,31 @@
-import React, { useState } from 'react';
-import { Button, Modal, Typography } from '@material-ui/core';
+import React from "react";
+import { Modal, Typography, Box, useMediaQuery } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 
-const JobModal = ({ job }) => {
-    const [open, setOpen] = useState(false);
+const JobModal = ({ job, open, handleClose }) => {
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
-    const handleOpen = () => {
-        setOpen(true);
-    };
-
-    const handleClose = () => {
-        setOpen(false);
-    };
-
-    return (
-        <div>
-            <Button variant="contained" color="primary" onClick={handleOpen}>
-                View Job Description
-            </Button>
-            <Modal open={open} onClose={handleClose}>
-                <div>
-                    <Typography variant="h6">{job.title}</Typography>
-                    <Typography variant="body1">{job.description}</Typography>
-                </div>
-            </Modal>
-        </div>
-    );
+  return (
+    <Modal open={open} onClose={handleClose}>
+      <Box
+        sx={{
+          backgroundColor: "white",
+          color: "black",
+          padding: "20px",
+          borderRadius: "8px",
+          maxWidth: isSmallScreen ? "90%" : "500px",
+          margin: "50px auto", // Center horizontally and add top/bottom margin
+          outline: "none",
+        }}
+      >
+        <Typography variant="h5" mb={2}>
+          {job.companyName}
+        </Typography>
+        <Typography variant="body1">{job.jobDetailsFromCompany}</Typography>
+      </Box>
+    </Modal>
+  );
 };
 
 export default JobModal;
