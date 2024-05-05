@@ -24,7 +24,10 @@ const JobList = ({ filters }) => {
     };
 
     try {
-      const response = await fetch("https://api.weekday.technology/adhoc/getSampleJdJSON", requestOptions);
+      const response = await fetch(
+        "https://api.weekday.technology/adhoc/getSampleJdJSON",
+        requestOptions
+      );
       const data = await response.json();
       setJobs([...jobs, ...data.jdList]);
       if (data.jdList.length === 0) {
@@ -49,15 +52,20 @@ const JobList = ({ filters }) => {
       // Role filter
       (!filters.role.length || filters.role.includes(job.jobRole)) &&
       // Experience filter
-      (!filters.experience.length || filters.experience.includes(job.minExp) || job.minExp === null) &&
+      (!filters.experience.length ||
+        filters.experience.includes(job.minExp) ||
+        job.minExp === null) &&
       // Remote filter
       (!filters.remote.length || filters.remote.includes(job.location)) &&
       // Salary filter
-      (!filters.salary || job.minJdSalary >= (filters.salary)) &&
+      (!filters.salary || job.minJdSalary >= filters.salary) &&
       // Location filter
       (!filters.location.length || filters.location.includes(job.location)) &&
       // Company name filter
-      (!filters.companyName || job.companyName.toLowerCase().includes(filters.companyName.toLowerCase()))
+      (!filters.companyName ||
+        job.companyName
+          .toLowerCase()
+          .includes(filters.companyName.toLowerCase()))
     );
   });
 

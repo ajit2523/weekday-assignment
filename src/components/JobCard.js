@@ -4,7 +4,6 @@ import {
   CardContent,
   Typography,
   CardActions,
-  Collapse,
   CardMedia,
   Button,
 } from "@mui/material";
@@ -37,7 +36,7 @@ const JobCard = ({ job }) => {
         borderRadius: 5,
         boxShadow: "0px 1px 4px 0px rgba(0, 0, 0, 0.25)",
         ":hover": {
-          boxShadow: 5 , // theme.shadows[20]
+          boxShadow: 5 , 
         },
       }}
     >
@@ -46,7 +45,7 @@ const JobCard = ({ job }) => {
           display: "flex",
           alignItems: "center",
           padding: "10px 20px 10px 20px",
-          gap: "1rem", // Equal gap between elements
+          gap: "1rem", 
         }}
       >
         <CardMedia

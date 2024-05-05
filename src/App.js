@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { createTheme, ThemeProvider } from "@mui/material";
 import Filters from "./components/Filters";
 import JobList from "./components/JobList";
-import {Box} from "@mui/material";
+import { Box } from "@mui/material";
 import "./App.css";
 
 const theme = createTheme({
@@ -23,7 +23,9 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        <Box display="flex" justifyContent="center" sx={{p:7}}><Filters filters={filters} setFilters={setFilters} /></Box>
+        <Box display="flex" justifyContent="center" sx={{ p: 7 }}>
+          <Filters filters={filters} setFilters={setFilters} />
+        </Box>
         <JobList filters={filters} />
       </div>
     </ThemeProvider>

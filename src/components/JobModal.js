@@ -15,7 +15,7 @@ const JobModal = ({ job, open, handleClose }) => {
           padding: "20px",
           borderRadius: "8px",
           maxWidth: isSmallScreen ? "90%" : "500px",
-          margin: "50px auto", // Center horizontally and add top/bottom margin
+          margin: "50px auto", 
           outline: "none",
         }}
       >

@@ -1,6 +1,5 @@
 import { React, useState } from "react";
 import Select from "react-select";
-import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
 import { Grid } from "@mui/material";
 
@@ -151,14 +150,14 @@ const Filters = ({ filters, setFilters }) => {
       alignItems="center"
       marginTop={2}
     >
-      <Grid item xs={12} sm={6} md={2} >
+      <Grid item xs={12} sm={6} md={2}>
         <Select
           onChange={handleRoleChange}
           options={roles}
           isMulti
           isClearable
           placeholder="Roles"
-          sx={{marginLeft:'5px'}}
+          sx={{ marginLeft: "5px" }}
         />
       </Grid>
       <Grid item xs={12} sm={6} md={2}>

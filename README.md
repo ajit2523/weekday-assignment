@@ -35,3 +35,9 @@ To get started with this project, follow these steps:
 
 5. Open your web browser and visit `http://localhost:3000` to view the application.
 
+## Features
+- Job listing: Users can view a list of available job listings.
+- Filtering: Users can filter job listings based on various criteria such as location, industry, or job type.
+- Infinite scroll: The application provides an infinite scroll feature, allowing users to seamlessly browse through job listings without pagination.
+- Candidate application: Users can apply for jobs directly through the application.
+- Responsive design: The application is designed to be responsive and work well on different devices and screen sizes.
