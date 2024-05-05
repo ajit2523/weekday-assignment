@@ -36,6 +36,9 @@ const JobCard = ({ job }) => {
         textAlign: "left",
         borderRadius: 5,
         boxShadow: "0px 1px 4px 0px rgba(0, 0, 0, 0.25)",
+        ":hover": {
+          boxShadow: 20, // theme.shadows[20]
+        },
       }}
     >
       <div
